@@ -2,5 +2,31 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true
-  }
+  },
+  "allowJs": true,
+  "skipLibCheck": true,
+  "strict": true,
+  "forceConsistentCasingInFileNames": true,
+  "noEmit": true,
+  "esModuleInterop": true,
+  "module": "esnext",
+  "moduleResolution": "node",
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "jsx": "preserve",
+  "incremental": true,
+  "baseUrl": ".",
+  "paths": {
+    "@components/*": [
+      "src/components/*"
+    ],
+  },
+  "include": [
+    "App.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
