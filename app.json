@@ -25,6 +25,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "iosStatusBar": {
+      "backgroundColor": "#C2185B",
+      "translucent": false
     }
   }
 }
