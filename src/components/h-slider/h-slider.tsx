@@ -2,12 +2,12 @@ import * as React from 'react';
 import { View, PanResponder, StyleSheet, GestureResponderEvent, PanResponderGestureState } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
-const VSlider = function VSlider({
+const HSlider = function HSlider({
 	min = 0,
 	max = 100,
 	step = 1,
-	width = 100,
-	height = 150,
+	width = 350,
+	height = 25,
 	onChange,
 	onComplete,
 	value: initialValue,
@@ -45,8 +45,9 @@ const VSlider = function VSlider({
 	React.useEffect(calculateValues, []);
 
 	const _calculateValue = (gestureState: PanResponderGestureState) => {
-		const ratio = -gestureState.dy / height;
+		const ratio = gestureState.dx / width;
 		const diff = max - min;
+
 		return step
 			? Math.max(
 					min,
@@ -95,7 +96,7 @@ const VSlider = function VSlider({
 
 	const sliderStyle = useAnimatedStyle(
 		() => ({
-			height: ((_value.value - min) * height) / (max - min),
+			width: ((_value.value - min) * width) / (max - min),
 			backgroundColor: '#888888',
 			borderRadius: 5,
 		}),
@@ -105,8 +106,8 @@ const VSlider = function VSlider({
 	return (
 		<View style={[sliderBaseStyles]}>
 			<View
-				className='rounded-lg'
-				style={[styles.container, sliderBaseStyles, { backgroundColor: '#000000' }]}
+				className='rounded-2xl bg-zinc-800'
+				style={[styles.container, sliderBaseStyles]}
 				{...panResponder.panHandlers}>
 				<Animated.View style={[sliderBaseStyles, styles.slider, sliderStyle]} />
 			</View>
@@ -125,4 +126,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default VSlider;
+export default HSlider;
